@@ -96,4 +96,55 @@ namespace _2DPhysics
 			Normal = normal;
 		}
 	}
+
+	public struct Body
+	{
+		ref Shape Shape;
+		Transform Tx;
+		Material Material;
+		MassData MassData;
+		Vector2 Velocity;
+		Vector2 Force;
+		double GravityScale;
+	}
+
+	public struct MassData
+	{
+		float Mass;
+		float InvMass;
+		float Inertia;
+		float InverseInertia;
+	}
+
+	public struct Material
+	{
+		float Density;
+		float Restitution;
+
+		public Material(float density, float restitution)
+		{
+			Density = density;
+			Restitution = restitution;
+		}
+
+		static const Material ROCK = new Material(0.6f, 0.1f);
+		static const Material WOOD = new Material(0.3f, 0.2f);
+		static const Material METAL = new Material(1.2f, 0.05f);
+		static const Material BOUNCY_BALL = new Material(0.3f, 0.8f);
+		static const Material SUPER_BALL = new Material(0.3f, 0.95f);
+		static const Material PILLOW = new Material(0.1f, 0.2f);
+		static const Material STATIC = new Material(0.0f, 0.4f);
+	}
+
+	public struct Pair
+	{
+		object A;
+		object B;
+
+		public Pair(object a, object b)
+		{
+			A = a;
+			B = b;
+		}
+	}
 }
